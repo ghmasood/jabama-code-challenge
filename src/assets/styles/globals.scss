@@ -1,0 +1,40 @@
+@import "./helpers/variabels";
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  overflow: visible !important;
+  padding: 0;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin: 0;
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+  min-height: 100vh;
+  background-color: $background;
+  /* width */
+  &::-webkit-scrollbar {
+    width: 0.3125rem;
+    background: $background;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: $background;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: $primary;
+    border-radius: 9999rem;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: $primary;
+  }
+}
