@@ -1,0 +1,53 @@
+@import "/src/assets/styles/helpers/variabels";
+
+.cartRoot {
+  background-color: $white;
+  padding: 4rem 5rem 2rem 2rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 1.25rem;
+  top: -2.25rem;
+  padding: 0.5rem;
+}
+
+.logoContainer {
+  position: relative;
+  aspect-ratio: 3;
+  margin-top: 50%;
+  transform: translateY(-60%);
+}
+.timeContract {
+  display: flex;
+  font-size: 1rem;
+  font-weight: 500;
+  color: $accent;
+  gap: 0.5rem;
+  justify-content: flex-start;
+}
+
+.position {
+  font-weight: 700;
+  font-size: 1.75rem;
+  color: $dark;
+}
+
+.company {
+  font-size: 1rem;
+  font-weight: 500;
+  color: $accent;
+}
+
+.location {
+  color: $primary;
+  margin-top: 1.5rem;
+  font-weight: 800;
+}
