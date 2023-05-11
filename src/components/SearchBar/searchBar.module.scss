@@ -1,0 +1,9 @@
+@import "/src/assets/styles/helpers/variabels";
+
+.searchBar {
+  display: flex;
+  justify-content: space-around;
+  background-color: $white;
+  border-radius: 0.5rem;
+  height: 5rem;
+}

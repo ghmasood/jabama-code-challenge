@@ -1,9 +1,15 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
+import React from "react";
 
-const inter = Inter({ subsets: ["latin"] });
+import JobList from "components/JobList";
+import SearchBar from "components/SearchBar";
+
+import styles from "./Home.module.scss";
 
 export default function Home() {
-  return <>test</>;
+  return (
+    <div className={styles.root}>
+      <SearchBar />
+      <JobList />
+    </div>
+  );
 }
