@@ -7,6 +7,7 @@
   width: 30%;
   & span {
     display: flex;
+    gap: 0.25rem;
     align-items: center;
     cursor: pointer;
   }
@@ -14,6 +15,7 @@
     color: $dark;
     font-weight: 600;
     cursor: pointer;
+    font-size: 1.125rem;
     user-select: none;
   }
   & button {
@@ -36,5 +38,5 @@
   height: 1.5rem;
   background-color: #e7e8ea;
   margin: 0.25rem;
-  border-radius: 0.25rem;
+  border-radius: 0.125rem;
 }
