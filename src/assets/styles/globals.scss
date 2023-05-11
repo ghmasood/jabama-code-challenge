@@ -18,7 +18,7 @@ body {
   background-color: $background;
   /* width */
   &::-webkit-scrollbar {
-    width: 0.3125rem;
+    width: 0.5rem;
     background: $background;
   }
 
@@ -29,12 +29,16 @@ body {
 
   /* Handle */
   &::-webkit-scrollbar-thumb {
-    background: $primary;
+    background: $placeholder;
     border-radius: 9999rem;
   }
 
   /* Handle on hover */
   &::-webkit-scrollbar-thumb:hover {
-    background: $primary;
+    background: $dark;
   }
+}
+
+.container {
+  padding: 3rem 9rem;
 }

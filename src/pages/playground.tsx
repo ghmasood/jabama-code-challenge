@@ -1,4 +1,5 @@
 import JobCart from "components/JobCart";
+import JobList from "components/JobList";
 import React from "react";
 import { IJobDetail } from "types";
 
@@ -16,19 +17,7 @@ const temp: IJobDetail = {
   location: "United Kingdom",
 };
 function Playground({ customClass = "" }: IPlaygroundProps) {
-  return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        marginTop: "5rem",
-        gap: "3rem",
-      }}
-    >
-      <JobCart jobData={temp} />
-      <JobCart jobData={temp} />
-    </div>
-  );
+  return <JobList />;
 }
 
 export default Playground;

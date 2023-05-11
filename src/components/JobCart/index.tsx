@@ -1,27 +1,37 @@
 import React from "react";
 
-import styles from "./jobCart.module.scss";
-import { IJobDetail } from "types";
-import Image from "next/image";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime);
 
+import styles from "./jobCart.module.scss";
+
+import { IJobDetail } from "types";
 interface IJobCartProps {
   jobData: IJobDetail;
 }
+
 function JobCart({ jobData }: IJobCartProps) {
   return (
     <div className={styles.cartRoot}>
-      <span
+      <div
         className={styles.logo}
         style={{
           backgroundColor: `${jobData.logoBackground}`,
         }}
       >
-        <div className={styles.logoContainer}>
-          <Image src={jobData.logo} alt={jobData.company} fill />
-        </div>
-      </span>
+        <div
+          style={{
+            backgroundImage: `url(${jobData.logo})`,
+            backgroundRepeat: "no-repeat",
+            width: "100%",
+            height: "100%",
+            backgroundPosition: "center",
+          }}
+        />
+      </div>
       <div className={styles.timeContract}>
-        <span>{jobData.postedAt}</span>
+        <span>{dayjs(jobData.postedAt).fromNow()}</span>
         <span>{"•"}</span>
         <span>{jobData.contract}</span>
       </div>
