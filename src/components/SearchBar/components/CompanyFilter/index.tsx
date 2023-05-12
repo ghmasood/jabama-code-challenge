@@ -12,8 +12,9 @@ function CompanyFilter() {
     <div className={styles.filter}>
       <MdSearch color={"rgba(2, 203, 154, 1)"} size="2.5rem" />
       <input
+        id="keywordFilter"
         placeholder="Filter by title, companies..."
-        value={router.query.keyword}
+        value={router.query.keyword ?? ""}
         onChange={(e) => {
           router.replace(
             { query: { ...router.query, keyword: e.target.value } },

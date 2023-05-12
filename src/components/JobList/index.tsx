@@ -10,11 +10,17 @@ interface IJobListProps {
   searchClick: boolean;
   setSearchClick: React.Dispatch<React.SetStateAction<boolean>>;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  initialJobList: IJobDetail[];
 }
 
-function JobList({ searchClick, setSearchClick, setLoading }: IJobListProps) {
+function JobList({
+  searchClick,
+  setSearchClick,
+  setLoading,
+  initialJobList,
+}: IJobListProps) {
   //STATES
-  const [jobList, setJobList] = useState<IJobDetail[]>([]);
+  const [jobList, setJobList] = useState(initialJobList);
 
   //ROUTER
   const router = useRouter();

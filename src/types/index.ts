@@ -29,3 +29,6 @@ export interface IJobRequest {
   page?: number;
 }
 
+export interface IHomePage {
+  jobList: IJobDetail[];
+}

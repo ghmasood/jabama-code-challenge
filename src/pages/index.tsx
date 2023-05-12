@@ -1,25 +1,41 @@
 import React, { useState } from "react";
+import { GetStaticProps, NextPage } from "next";
 
 import JobList from "components/JobList";
 import SearchBar from "components/SearchBar";
 
 import styles from "./Home.module.scss";
 
-export default function Home() {
+import { IHomePage, IJobResponse } from "types";
+
+const Home: NextPage<IHomePage> = (props) => {
   //STATES
   const [searchBtn, setSearchBtn] = useState(true);
   const [loading, setLoading] = useState(false);
   return (
     <div className={styles.root}>
-      <SearchBar
-        setBtn={setSearchBtn}
-        loading={loading}
-      />
+      <SearchBar setBtn={setSearchBtn} loading={loading} />
       <JobList
+        initialJobList={props.jobList}
         searchClick={searchBtn}
         setSearchClick={setSearchBtn}
         setLoading={setLoading}
       />
     </div>
   );
-}
+};
+
+export default Home;
+
+export const getStaticProps: GetStaticProps<IHomePage> = async (ctx) => {
+  const res = await fetch(
+    "http://jabama-devjobs-api.vercel.app/api/v1/jobs?limit=9"
+  );
+  const data = (await res.json()) as IJobResponse;
+
+  return {
+    props: {
+      jobList: data.result.items,
+    },
+  };
+};

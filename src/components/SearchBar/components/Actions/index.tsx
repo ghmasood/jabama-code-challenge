@@ -36,10 +36,14 @@ function Actions({ setBtn, loading }: IActionsProps) {
         ) : (
           <div className={styles.box} />
         )}
-        <label htmlFor="fullTime">Full Time Only</label>
+        <p>Full Time Only</p>
       </span>
       <button onClick={() => setBtn(true)}>
-        {loading ? <CgSpinner className={styles.loading} size={"2rem"} /> : "Search"}
+        {loading ? (
+          <CgSpinner className={styles.loading} size={"2rem"} />
+        ) : (
+          "Search"
+        )}
       </button>
     </div>
   );
