@@ -1,10 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+
+import { MdCheckBox } from "react-icons/md";
 
 import styles from "./actions.module.scss";
-import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
-interface IActionsProps {}
-function Actions({}: IActionsProps) {
-  const [isFull, setIsFull] = useState(false);
+
+interface IActionsProps {
+  setBtn: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+function Actions({ setBtn }: IActionsProps) {
+  const router = useRouter();
+  const [isFull, setIsFull] = useState(router.query.fullOnly ?? false);
+  useEffect(() => {
+    router.replace(
+      { query: { ...router.query, fullOnly: isFull } },
+      undefined,
+      { shallow: true }
+    );
+  }, [isFull]);
+
   return (
     <div className={styles.actions}>
       <span onClick={() => setIsFull(!isFull)}>
@@ -15,7 +30,7 @@ function Actions({}: IActionsProps) {
         )}
         <label htmlFor="fullTime">Full Time Only</label>
       </span>
-      <button>Search</button>
+      <button onClick={() => setBtn(true)}>Search</button>
     </div>
   );
 }

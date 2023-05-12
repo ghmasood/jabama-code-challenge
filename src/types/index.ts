@@ -23,8 +23,9 @@ export interface IJobResponse {
 
 export interface IJobRequest {
   fullTimeOnly?: boolean;
-  keyWord?: string;
+  keyword?: string;
   location?: string;
   limit?: number;
   page?: number;
 }
+

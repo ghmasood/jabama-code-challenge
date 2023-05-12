@@ -6,9 +6,11 @@ import Actions from "./components/Actions";
 
 import styles from "./searchBar.module.scss";
 
-interface ISearchBarProps {}
+interface ISearchBarProps {
+  setBtn: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-function SearchBar({}: ISearchBarProps) {
+function SearchBar({ setBtn }: ISearchBarProps) {
   return (
     <form
       className={styles.searchBar}
@@ -19,7 +21,7 @@ function SearchBar({}: ISearchBarProps) {
     >
       <CompanyFilter />
       <LocationFilter />
-      <Actions />
+      <Actions setBtn={setBtn} />
     </form>
   );
 }
