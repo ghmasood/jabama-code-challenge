@@ -9,9 +9,10 @@ import { IJobDetail, IJobResponse } from "types";
 interface IJobListProps {
   searchClick: boolean;
   setSearchClick: React.Dispatch<React.SetStateAction<boolean>>;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function JobList({ searchClick, setSearchClick }: IJobListProps) {
+function JobList({ searchClick, setSearchClick, setLoading }: IJobListProps) {
   //STATES
   const [jobList, setJobList] = useState<IJobDetail[]>([]);
 
@@ -20,8 +21,8 @@ function JobList({ searchClick, setSearchClick }: IJobListProps) {
 
   //LIFE CYCLE HOOK
   useEffect(() => {
-    router.isReady &&
-      searchClick &&
+    if (router.isReady && searchClick) {
+      setLoading(true);
       fetch(
         "http://jabama-devjobs-api.vercel.app/api/v1/jobs?" +
           new URLSearchParams({
@@ -31,15 +32,18 @@ function JobList({ searchClick, setSearchClick }: IJobListProps) {
             limit: "15",
             page: "",
           }).toString()
-      ).then((res) => {
-        {
-          res
-            .json()
-            .then((data: IJobResponse) => setJobList(data.result.items));
+      )
+        .then((res) => {
+          {
+            res
+              .json()
+              .then((data: IJobResponse) => setJobList(data.result.items));
 
-          setSearchClick(false);
-        }
-      });
+            setSearchClick(false);
+          }
+        })
+        .finally(() => setLoading(false));
+    }
   }, [router.query, searchClick]);
   return (
     <div className={styles.joblist}>

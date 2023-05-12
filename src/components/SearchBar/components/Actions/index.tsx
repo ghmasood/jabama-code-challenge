@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import { MdCheckBox } from "react-icons/md";
+import { CgSpinner } from "react-icons/cg";
 
 import styles from "./actions.module.scss";
 
 interface IActionsProps {
   setBtn: React.Dispatch<React.SetStateAction<boolean>>;
+  loading: boolean;
 }
 
-function Actions({ setBtn }: IActionsProps) {
+function Actions({ setBtn, loading }: IActionsProps) {
   //ROUTER
   const router = useRouter();
 
@@ -36,7 +38,9 @@ function Actions({ setBtn }: IActionsProps) {
         )}
         <label htmlFor="fullTime">Full Time Only</label>
       </span>
-      <button onClick={() => setBtn(true)}>Search</button>
+      <button onClick={() => setBtn(true)}>
+        {loading ? <CgSpinner className={styles.loading} size={"2rem"} /> : "Search"}
+      </button>
     </div>
   );
 }
