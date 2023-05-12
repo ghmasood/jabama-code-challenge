@@ -16,7 +16,6 @@ function SearchBar({ setBtn }: ISearchBarProps) {
       className={styles.searchBar}
       onSubmit={(e) => {
         e.preventDefault();
-        console.log("object");
       }}
     >
       <CompanyFilter />

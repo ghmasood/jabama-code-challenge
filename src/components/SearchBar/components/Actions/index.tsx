@@ -18,11 +18,12 @@ function Actions({ setBtn }: IActionsProps) {
 
   //LIFECYCLE HOOK
   useEffect(() => {
-    router.replace(
-      { query: { ...router.query, fullOnly: isFull } },
-      undefined,
-      { shallow: true }
-    );
+    router.isReady &&
+      router.replace(
+        { query: { ...router.query, fullOnly: isFull } },
+        undefined,
+        { shallow: true }
+      );
   }, [isFull]);
 
   return (

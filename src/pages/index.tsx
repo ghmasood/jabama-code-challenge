@@ -7,7 +7,7 @@ import styles from "./Home.module.scss";
 
 export default function Home() {
   //STATES
-  const [searchBtn, setSearchBtn] = useState(false);
+  const [searchBtn, setSearchBtn] = useState(true);
 
   return (
     <div className={styles.root}>
