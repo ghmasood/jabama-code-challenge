@@ -5,9 +5,7 @@ import { MdLocationOn } from "react-icons/md/";
 
 import styles from "./locationFilter.module.scss";
 
-interface ILocationFilterProps {}
-
-function LocationFilter({}: ILocationFilterProps) {
+function LocationFilter() {
   const router = useRouter();
 
   return (

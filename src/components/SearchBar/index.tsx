@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import CompanyFilter from "./components/CompanyFilter";
 import LocationFilter from "./components/LocationFilter";

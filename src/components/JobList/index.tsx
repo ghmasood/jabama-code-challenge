@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 import JobCart from "components/JobCart";
 
-import { IJobDetail, IJobResponse } from "types";
-
 import styles from "./jobList.module.scss";
-import { useRouter } from "next/router";
 
+import { IJobDetail, IJobResponse } from "types";
 interface IJobListProps {
   searchClick: boolean;
   setSearchClick: React.Dispatch<React.SetStateAction<boolean>>;

@@ -10,8 +10,13 @@ interface IActionsProps {
 }
 
 function Actions({ setBtn }: IActionsProps) {
+  //ROUTER
   const router = useRouter();
+
+  //STATE
   const [isFull, setIsFull] = useState(router.query.fullOnly ?? false);
+
+  //LIFECYCLE HOOK
   useEffect(() => {
     router.replace(
       { query: { ...router.query, fullOnly: isFull } },
