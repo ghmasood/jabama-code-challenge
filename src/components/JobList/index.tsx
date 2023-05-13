@@ -43,14 +43,21 @@ function JobList({
 
   useEffect(() => {
     if ((router.isReady && searchClick) || moreClick) {
-      moreClick ? setMoreLoading(true) : setLoading(true);
+      if (moreClick) {
+        setMoreLoading(true);
+      } else {
+        setLoading(true);
+        router.replace({ query: { ...router.query, limit: 9 } }, undefined, {
+          shallow: true,
+        });
+      }
       fetch(
         "http://jabama-devjobs-api.vercel.app/api/v1/jobs?" +
           new URLSearchParams({
             fullTimeOnly: router.query.fullOnly === "true" ? "true" : "",
             keyword: (router.query.keyword as string) ?? "",
             location: (router.query.loc as string) ?? "",
-            limit: (router.query.limit as string) ?? "",
+            limit: (router.query.limit as string) ?? "9",
             page: "1",
           }).toString()
       )
