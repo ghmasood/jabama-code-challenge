@@ -10,7 +10,7 @@ import { IHomePage, IJobResponse } from "types";
 
 const Home: NextPage<IHomePage> = (props) => {
   //STATES
-  const [searchBtn, setSearchBtn] = useState(true);
+  const [searchBtn, setSearchBtn] = useState(false);
   const [loading, setLoading] = useState(false);
   return (
     <div className={styles.root}>
@@ -19,6 +19,7 @@ const Home: NextPage<IHomePage> = (props) => {
         initialJobList={props.jobList}
         searchClick={searchBtn}
         setSearchClick={setSearchBtn}
+        loading={loading}
         setLoading={setLoading}
       />
     </div>
@@ -37,5 +38,6 @@ export const getStaticProps: GetStaticProps<IHomePage> = async (ctx) => {
     props: {
       jobList: data.result.items,
     },
+    revalidate: 600,
   };
 };

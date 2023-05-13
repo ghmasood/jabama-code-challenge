@@ -6,9 +6,11 @@ import JobCart from "components/JobCart";
 import styles from "./jobList.module.scss";
 
 import { IJobDetail, IJobResponse } from "types";
+import JobCartSkeleton from "components/JobCart/skeleton";
 interface IJobListProps {
   searchClick: boolean;
   setSearchClick: React.Dispatch<React.SetStateAction<boolean>>;
+  loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   initialJobList: IJobDetail[];
 }
@@ -16,6 +18,7 @@ interface IJobListProps {
 function JobList({
   searchClick,
   setSearchClick,
+  loading,
   setLoading,
   initialJobList,
 }: IJobListProps) {
@@ -50,12 +53,14 @@ function JobList({
         })
         .finally(() => setLoading(false));
     }
-  }, [router.query, searchClick]);
+  }, [searchClick]);
   return (
     <div className={styles.joblist}>
-      {jobList.map((item, index) => (
-        <JobCart jobData={item} key={index + "id" + item.id} />
-      ))}
+      {loading
+        ? [...new Array(3)].map((item, index) => <JobCartSkeleton />)
+        : jobList.map((item, index) => (
+            <JobCart jobData={item} key={index + "id" + item.id} />
+          ))}
     </div>
   );
 }
