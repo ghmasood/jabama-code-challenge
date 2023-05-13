@@ -57,7 +57,9 @@ function JobList({
   return (
     <div className={styles.joblist}>
       {loading
-        ? [...new Array(3)].map((item, index) => <JobCartSkeleton />)
+        ? [...new Array(3)].map((item, index) => (
+            <JobCartSkeleton key={index + "skeleton"} />
+          ))
         : jobList.map((item, index) => (
             <JobCart jobData={item} key={index + "id" + item.id} />
           ))}

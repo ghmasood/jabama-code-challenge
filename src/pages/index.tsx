@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { GetStaticProps, NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 
 import JobList from "components/JobList";
 import SearchBar from "components/SearchBar";
@@ -28,9 +28,14 @@ const Home: NextPage<IHomePage> = (props) => {
 
 export default Home;
 
-export const getStaticProps: GetStaticProps<IHomePage> = async (ctx) => {
+export const getServerSideProps: GetServerSideProps<IHomePage> = async (
+  ctx
+) => {
+  const { fullOnly, keyword, loc } = ctx.query;
   const res = await fetch(
-    "http://jabama-devjobs-api.vercel.app/api/v1/jobs?limit=9"
+    `http://jabama-devjobs-api.vercel.app/api/v1/jobs?limit=9&fullTimeOnly=${
+      fullOnly ?? ""
+    }&keyword=${keyword ?? ""}&location=${loc ?? ""}`
   );
   const data = (await res.json()) as IJobResponse;
 
@@ -38,6 +43,5 @@ export const getStaticProps: GetStaticProps<IHomePage> = async (ctx) => {
     props: {
       jobList: data.result.items,
     },
-    revalidate: 600,
   };
 };
