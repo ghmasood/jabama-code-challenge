@@ -30,5 +30,5 @@ export interface IJobRequest {
 }
 
 export interface IHomePage {
-  jobList: IJobDetail[];
+  jobResponse: IJobResponse;
 }

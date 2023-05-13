@@ -12,11 +12,12 @@ const Home: NextPage<IHomePage> = (props) => {
   //STATES
   const [searchBtn, setSearchBtn] = useState(false);
   const [loading, setLoading] = useState(false);
+
   return (
     <div className={styles.root}>
       <SearchBar setBtn={setSearchBtn} loading={loading} />
       <JobList
-        initialJobList={props.jobList}
+        initialResponse={props.jobResponse}
         searchClick={searchBtn}
         setSearchClick={setSearchBtn}
         loading={loading}
@@ -31,17 +32,19 @@ export default Home;
 export const getServerSideProps: GetServerSideProps<IHomePage> = async (
   ctx
 ) => {
-  const { fullOnly, keyword, loc } = ctx.query;
+  const { fullOnly, keyword, loc, limit } = ctx.query;
   const res = await fetch(
-    `http://jabama-devjobs-api.vercel.app/api/v1/jobs?limit=9&fullTimeOnly=${
-      fullOnly ?? ""
-    }&keyword=${keyword ?? ""}&location=${loc ?? ""}`
+    `http://jabama-devjobs-api.vercel.app/api/v1/jobs?limit=${
+      limit ?? 9
+    }&fullTimeOnly=${fullOnly ?? ""}&keyword=${keyword ?? ""}&location=${
+      loc ?? ""
+    }`
   );
   const data = (await res.json()) as IJobResponse;
 
   return {
     props: {
-      jobList: data.result.items,
+      jobResponse: data,
     },
   };
 };

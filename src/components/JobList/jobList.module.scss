@@ -1,6 +1,26 @@
-.joblist {
+@import "/src/assets/styles/helpers/variabels";
+
+.jobList {
   display: flex;
   flex-wrap: wrap;
   gap: 4.5rem 0;
   justify-content: space-between;
+}
+
+.loadMore {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem auto;
+  height: 3.5rem;
+  width: 10rem;
+  padding: 0 2rem;
+  background-color: $primary;
+  border-radius: 0.5rem;
+  color: $white;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  user-select: none;
 }

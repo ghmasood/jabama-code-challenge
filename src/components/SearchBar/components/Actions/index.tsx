@@ -39,11 +39,7 @@ function Actions({ setBtn, loading }: IActionsProps) {
         <p>Full Time Only</p>
       </span>
       <button onClick={() => setBtn(true)}>
-        {loading ? (
-          <CgSpinner className={styles.loading} size={"2rem"} />
-        ) : (
-          "Search"
-        )}
+        {loading ? <CgSpinner className="loading" size={"2rem"} /> : "Search"}
       </button>
     </div>
   );
