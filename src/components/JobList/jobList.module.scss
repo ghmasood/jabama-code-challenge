@@ -1,17 +1,16 @@
-@import "/src/assets/styles/helpers/variabels";
+@import "/src/assets/styles/helpers/variables";
 
 .jobList {
   display: flex;
   flex-wrap: wrap;
-  gap: 4.5rem 0;
-  justify-content: space-between;
+  gap: 4.5rem 2rem;
 }
 
 .loadMore {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 1.5rem auto;
+  margin: 2.5rem auto 0 auto;
   height: 3.5rem;
   width: 10rem;
   padding: 0 2rem;

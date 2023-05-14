@@ -1,6 +1,15 @@
+//COLORS
 $primary: rgba(3, 203, 154, 1);
 $accent: rgba(109, 127, 152, 1);
 $dark: rgba(25, 32, 45, 1);
 $background: rgba(243, 246, 248, 1);
 $white: rgb(255, 255, 255);
 $placeholder: rgba(140, 143, 149, 1);
+
+//BREAKPOINTS
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;

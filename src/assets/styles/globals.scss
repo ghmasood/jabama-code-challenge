@@ -1,6 +1,7 @@
-@import "./helpers/variabels";
+@import "./helpers/variables";
 * {
   box-sizing: border-box;
+  border: 1px solid seagreen;
 }
 
 html,
@@ -39,7 +40,25 @@ body {
 }
 
 .container {
-  padding: 3rem 12rem;
+  padding: 1rem 1rem;
+}
+
+@media screen and (min-width: $breakpoint-md) {
+  .container {
+    padding: 6rem 2rem;
+  }
+}
+
+@media screen and (min-width: $breakpoint-xl) {
+  .container {
+    padding: 6rem 4rem;
+  }
+}
+
+@media screen and (min-width: $breakpoint-xxl) {
+  .container {
+    padding: 6rem 12rem;
+  }
 }
 
 .skeleton {

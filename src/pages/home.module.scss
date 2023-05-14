@@ -1,5 +1,13 @@
+@import "/src/assets/styles/helpers/variables";
+
 .root {
   display: flex;
   flex-direction: column;
-  gap: 8rem;
+  gap: 4rem;
+}
+
+@media screen and (min-width: $breakpoint-md) {
+  .root {
+    gap: 8rem;
+  }
 }

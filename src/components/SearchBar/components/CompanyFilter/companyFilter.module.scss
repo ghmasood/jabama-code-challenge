@@ -1,15 +1,17 @@
-@import "/src/assets/styles/helpers/variabels";
+@import "/src/assets/styles/helpers/variables";
 
 .filter {
   display: flex;
   align-items: center;
-  padding: 1.5rem;
+  padding: 0.5rem;
   gap: 1rem;
-  width: 40%;
+  width: 100%;
+  height: 3rem;
+
   & input {
     border: 0;
     width: 100%;
-    height: 5rem;
+    height: 1rem;
     font-size: 1.25rem;
     font-weight: 600;
     color: $accent;
@@ -20,6 +22,18 @@
     }
     &:focus-visible {
       outline-width: 0;
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-md) {
+  .filter {
+    padding: 1.5rem;
+    width: 35%;
+    height: auto;
+    & input {
+      width: 100%;
+      height: 5rem;
     }
   }
 }

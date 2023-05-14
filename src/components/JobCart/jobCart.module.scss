@@ -1,16 +1,44 @@
-@import "/src/assets/styles/helpers/variabels";
+@import "/src/assets/styles/helpers/variables";
 
 .cartRoot {
   background-color: $white;
-  padding: 4rem 5rem 2rem 2rem;
+  padding: 4rem 2rem 2.5rem 1rem;
   border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   position: relative;
-  flex-basis: 31.5%;
+  flex-basis: 100%;
   flex-grow: 0;
   flex-shrink: 0;
+  justify-content: space-around;
+}
+
+@media screen and (min-width: $breakpoint-sm) {
+  .cartRoot {
+    flex-basis: calc((100% - 2rem) / 2);
+    padding: 4rem 1rem 2rem 2rem;
+  }
+}
+
+@media screen and (min-width: $breakpoint-md) {
+  .cartRoot {
+    flex-basis: calc((100% - 2rem) / 2);
+    padding: 4rem 2rem 2.5rem 2rem;
+  }
+}
+
+@media screen and (min-width: $breakpoint-xl) {
+  .cartRoot {
+    flex-basis: calc((100% - 4rem) / 3);
+  }
+}
+
+@media screen and (min-width: $breakpoint-xxl) {
+  .cartRoot {
+    flex-basis: calc((100% - 4rem) / 3);
+    padding: 4rem 3rem 2.5rem 2rem;
+  }
 }
 
 .logo {
@@ -26,7 +54,7 @@
   font-size: 1rem;
   font-weight: 500;
   color: $accent;
-  gap: 0.5rem;
+  gap: 0.25rem;
   justify-content: flex-start;
 }
 

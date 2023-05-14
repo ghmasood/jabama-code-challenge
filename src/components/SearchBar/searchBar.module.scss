@@ -1,9 +1,16 @@
-@import "/src/assets/styles/helpers/variabels";
+@import "/src/assets/styles/helpers/variables";
 
 .searchBar {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   background-color: $white;
   border-radius: 0.5rem;
-  height: 5rem;
+}
+
+@media screen and (min-width: $breakpoint-md) {
+  .searchBar {
+    flex-direction: row;
+    height: 5rem;
+  }
 }

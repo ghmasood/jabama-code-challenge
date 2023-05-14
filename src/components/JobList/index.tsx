@@ -76,7 +76,7 @@ function JobList({
   }, [searchClick, router.query.limit]);
 
   return (
-    <div>
+    <div className={styles.jobRoot}>
       <div className={styles.jobList}>
         {loading
           ? [...new Array(9)].map((item, index) => (
