@@ -10,6 +10,7 @@ import { CgSpinner } from "react-icons/cg";
 import styles from "./jobList.module.scss";
 
 import { IJobResponse } from "types";
+import { getJobs } from "./services";
 interface IJobListProps {
   searchClick: boolean;
   setSearchClick: React.Dispatch<React.SetStateAction<boolean>>;
@@ -52,27 +53,14 @@ function JobList({
           shallow: true,
         });
       }
-      fetch(
-        "https://jabama-devjobs-api.vercel.app/api/v1/jobs?" +
-          new URLSearchParams({
-            fullTimeOnly: router.query.fullOnly === "true" ? "true" : "",
-            keyword: (router.query.keyword as string) ?? "",
-            location: (router.query.loc as string) ?? "",
-            limit: (router.query.limit as string) ?? "9",
-            page: "1",
-          }).toString()
-      )
-        .then((res) => {
-          {
-            res.json().then((data: IJobResponse) => setJobRes(data));
-          }
-        })
-        .finally(() => {
-          setSearchClick(false);
-          setMoreClick(false);
-          setLoading(false);
-          setMoreLoading(false);
-        });
+      getJobs({
+        router,
+        setJobRes,
+        setSearchClick,
+        setMoreClick,
+        setLoading,
+        setMoreLoading,
+      });
     }
   }, [searchClick, router.query.limit]);
 
@@ -118,7 +106,21 @@ function JobList({
       {jobRes.result.meta.total === 0 && (
         <span className={styles.notFound}>
           No jobs were found <br />
-          <Link href="/">Back home?</Link>
+          <Link
+            href="/"
+            onClick={() => {
+              router.isReady &&
+                getJobs({
+                  setSearchClick,
+                  setMoreLoading,
+                  setMoreClick,
+                  setLoading,
+                  setJobRes,
+                });
+            }}
+          >
+            Back home?
+          </Link>
         </span>
       )}
     </div>

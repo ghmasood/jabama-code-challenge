@@ -21,7 +21,7 @@ const Error: NextPage<Props> = ({ statusCode }) => {
       if (counter > 0) {
         setCounter((time) => time - 1);
       }
-      if (counter === 0) {
+      if (counter === 1) {
         clearInterval(myInterval);
         goDashboard();
       }
