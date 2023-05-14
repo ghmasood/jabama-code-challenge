@@ -34,7 +34,7 @@ export const getServerSideProps: GetServerSideProps<IHomePage> = async (
 ) => {
   const { fullOnly, keyword, loc, limit } = ctx.query;
   const res = await fetch(
-    `http://jabama-devjobs-api.vercel.app/api/v1/jobs?limit=${
+    `https://jabama-devjobs-api.vercel.app/api/v1/jobs?limit=${
       limit ?? 9
     }&fullTimeOnly=${fullOnly ?? ""}&keyword=${keyword ?? ""}&location=${
       loc ?? ""

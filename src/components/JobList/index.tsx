@@ -52,7 +52,7 @@ function JobList({
         });
       }
       fetch(
-        "http://jabama-devjobs-api.vercel.app/api/v1/jobs?" +
+        "https://jabama-devjobs-api.vercel.app/api/v1/jobs?" +
           new URLSearchParams({
             fullTimeOnly: router.query.fullOnly === "true" ? "true" : "",
             keyword: (router.query.keyword as string) ?? "",
@@ -113,6 +113,12 @@ function JobList({
         </button>
       ) : (
         ""
+      )}
+      {jobRes.result.meta.total === 0 && (
+        <span className={styles.notFound}>
+          No jobs were found <br />
+          <a href="/">Back home?</a>
+        </span>
       )}
     </div>
   );
