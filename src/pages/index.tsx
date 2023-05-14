@@ -4,7 +4,7 @@ import { GetServerSideProps, NextPage } from "next";
 import JobList from "components/JobList";
 import SearchBar from "components/SearchBar";
 
-import styles from "./Home.module.scss";
+import styles from "./home.module.scss";
 
 import { IHomePage, IJobResponse } from "types";
 
