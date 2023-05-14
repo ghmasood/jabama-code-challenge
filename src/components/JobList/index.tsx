@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 import JobCart from "components/JobCart";
 import JobCartSkeleton from "components/JobCart/skeleton";
@@ -117,7 +118,7 @@ function JobList({
       {jobRes.result.meta.total === 0 && (
         <span className={styles.notFound}>
           No jobs were found <br />
-          <a href="/">Back home?</a>
+          <Link href="/">Back home?</Link>
         </span>
       )}
     </div>
