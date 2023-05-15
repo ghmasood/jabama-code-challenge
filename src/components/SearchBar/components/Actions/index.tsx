@@ -7,11 +7,11 @@ import { CgSpinner } from "react-icons/cg";
 import styles from "./actions.module.scss";
 
 interface IActionsProps {
-  setBtn: React.Dispatch<React.SetStateAction<boolean>>;
   loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function Actions({ setBtn, loading }: IActionsProps) {
+function Actions({ loading, setLoading }: IActionsProps) {
   //ROUTER
   const router = useRouter();
 
@@ -38,7 +38,12 @@ function Actions({ setBtn, loading }: IActionsProps) {
         )}
         <p>Full Time Only</p>
       </span>
-      <button onClick={() => setBtn(true)}>
+      <button
+        onClick={() => {
+          setLoading(true);
+          router.replace({ query: { ...router.query, limit: 9 } });
+        }}
+      >
         {loading ? <CgSpinner className="loading" size={"2rem"} /> : "Search"}
       </button>
     </div>

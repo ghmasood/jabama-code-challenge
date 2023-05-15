@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GetServerSideProps, NextPage } from "next";
+import { useRouter } from "next/router";
 
 import JobList from "components/JobList";
 import SearchBar from "components/SearchBar";
@@ -10,19 +11,26 @@ import { IHomePage, IJobResponse } from "types";
 
 const Home: NextPage<IHomePage> = (props) => {
   //STATES
-  const [searchBtn, setSearchBtn] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  //ROUTER
+  const router = useRouter();
+
+  //LIFECYCLE HOOK
+  useEffect(() => {
+    if (router.query.limit === undefined) {
+      router.replace({ query: { ...router.query, limit: 9 } });
+    }
+  }, [router]);
+
+  useEffect(() => {
+    setLoading(false);
+  }, [props]);
 
   return (
     <div className={styles.root}>
-      <SearchBar setBtn={setSearchBtn} loading={loading} />
-      <JobList
-        initialResponse={props.jobResponse}
-        searchClick={searchBtn}
-        setSearchClick={setSearchBtn}
-        loading={loading}
-        setLoading={setLoading}
-      />
+      <SearchBar loading={loading} setLoading={setLoading} />
+      <JobList SSRResponse={props.jobResponse} loading={loading} />
     </div>
   );
 };
