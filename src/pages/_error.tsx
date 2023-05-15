@@ -10,26 +10,6 @@ interface Props {
 
 const Error: NextPage<Props> = ({ statusCode }) => {
   const router = useRouter();
-  const goDashboard = () => {
-    router.replace("/");
-  };
-
-  const [counter, setCounter] = useState(9);
-
-  useEffect(() => {
-    let myInterval = setInterval(() => {
-      if (counter > 0) {
-        setCounter((time) => time - 1);
-      }
-      if (counter === 1) {
-        clearInterval(myInterval);
-        goDashboard();
-      }
-    }, 1000);
-    return () => {
-      clearInterval(myInterval);
-    };
-  });
 
   return (
     <div className={styles.errorPage}>
@@ -39,8 +19,12 @@ const Error: NextPage<Props> = ({ statusCode }) => {
           : "An error occurred on client"}
       </h1>
 
-      <button onClick={goDashboard}>
-        Go to Home <span>({counter}s)</span>
+      <button
+        onClick={() => {
+          router.replace("/", undefined, { shallow: false });
+        }}
+      >
+        Go to Home
       </button>
     </div>
   );
