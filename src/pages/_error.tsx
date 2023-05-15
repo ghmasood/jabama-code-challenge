@@ -1,7 +1,9 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { NextPage, NextPageContext } from "next";
 import { useRouter } from "next/router";
+
+import { CgSpinner } from "react-icons/cg";
 
 import styles from "./error.module.scss";
 interface Props {
@@ -9,23 +11,31 @@ interface Props {
 }
 
 const Error: NextPage<Props> = ({ statusCode }) => {
+  //ROUTER
   const router = useRouter();
-
+  //STATES
+  const [loading, setLoading] = useState(false);
   return (
     <div className={styles.errorPage}>
-      <h1>
+      <p>!</p>
+      <div>
         {statusCode
           ? `An error ${statusCode} occurred on server`
           : "An error occurred on client"}
-      </h1>
+      </div>
 
-      <button
+      <span
         onClick={() => {
-          router.replace("/", undefined, { shallow: false });
+          setLoading(true);
+          router.replace("/");
         }}
       >
-        Go to Home
-      </button>
+        {loading ? (
+          <CgSpinner className="loading" size="3rem" />
+        ) : (
+          "Back to home?"
+        )}
+      </span>
     </div>
   );
 };

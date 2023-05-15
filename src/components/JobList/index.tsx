@@ -76,7 +76,7 @@ function JobList({ loading, SSRResponse }: IJobListProps) {
               router.isReady && {};
             }}
           >
-            Back home?
+            Back to home?
           </Link>
         </span>
       )}
