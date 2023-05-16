@@ -27,7 +27,7 @@ const Error: NextPage<Props> = ({ statusCode }) => {
       <span
         onClick={() => {
           setLoading(true);
-          router.replace("/");
+          router.replace("/?limit=9");
         }}
       >
         {loading ? (

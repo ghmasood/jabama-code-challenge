@@ -17,11 +17,11 @@ interface IJobListProps {
 
 function JobList({ loading, SSRResponse }: IJobListProps) {
   //STATES
-
   const [moreLoading, setMoreLoading] = useState(false);
 
   //ROUTER
   const router = useRouter();
+
   //LIFE CYCLE HOOK
   useEffect(() => {
     setMoreLoading(false);
@@ -70,14 +70,7 @@ function JobList({ loading, SSRResponse }: IJobListProps) {
       {SSRResponse.result.meta.total === 0 && !loading && (
         <span className={styles.notFound}>
           No jobs were found <br />
-          <Link
-            href="/"
-            onClick={() => {
-              router.isReady && {};
-            }}
-          >
-            Back to home?
-          </Link>
+          <Link href="/?limit=9">Back to home?</Link>
         </span>
       )}
     </div>

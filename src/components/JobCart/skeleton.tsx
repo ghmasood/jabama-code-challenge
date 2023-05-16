@@ -1,9 +1,5 @@
 import React from "react";
 
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
-dayjs.extend(relativeTime);
-
 import styles from "./jobCart.module.scss";
 
 function JobCartSkeleton() {
@@ -37,4 +33,4 @@ function JobCartSkeleton() {
   );
 }
 
-export default JobCartSkeleton;
+export default React.memo(JobCartSkeleton);

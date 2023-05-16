@@ -42,4 +42,4 @@ function JobCart({ jobData }: IJobCartProps) {
   );
 }
 
-export default JobCart;
+export default React.memo(JobCart);
