@@ -1,18 +1,18 @@
 # Job Application App
 
-This project was created according to Jabama code challenge. In this project we implement page of job application with some filter. You can see [Live Demo](http://jabama.gh-masoud.ir) powered by Vercel.
+This project was created for the Jabama code challenge. In this project, we implemented a job application page with some filters. You can see the [live demo](http://jabama.gh-masoud.ir/), which is powered by Vercel. 
 <br/>
-I'm storing the params in url and syncing with inputs and checkbox. Render and fetch data when user click on  **Search** button. All api calls are server-side render with showing fallback error.
+I store the query params in the URL and sync them with the inputs and checkboxes. I render and fetch data when the user clicks on the search button. All API calls are server-side rendered with fallback error messages displayed.
 <br/>
-You can improve it by add application page and other things! and for use this project you can use `npm run dev` script in terminal.
+You can improve this project by adding an application page and other features! To use this project, you can run the npm run dev script in your terminal.
 
 ### Features:
 
-- Load list of applications in home page with **Load More** button
-- Two input and check box in **Searchbar** for filtering data
-- Skeleton cart loading until fully loaded
-- Design and Responsive design with SCSS
-- Implement error page and not found message with return to home page
+- Load a list of applications on the home page with a **Load More** button
+- Include two input fields and a checkbox in the **SearchBar** for filtering data
+- Include a skeleton card loading animation until the data is fully loaded
+- Design and implement responsive design using SCSS.
+- Implement an error page and a not found message with a link to return to the home page.
 
 ### Used packages:
 
@@ -25,8 +25,8 @@ You can improve it by add application page and other things! and for use this pr
 
 ### Additonl thing:
 
-- **Design:** My design based on this [screen shot](https://jabama-jobs-code-challenge.vercel.app/design/desktop-design-home.png)
-- **Server:** I'm using this [Api Document](https://jabama-devjobs-api.vercel.app/swagger) for fetching data
+- **Design:** My design is based on this [screenshot](https://jabama-jobs-code-challenge.vercel.app/design/desktop-design-home.png).
+- **Server:** I used this [Api Document](https://jabama-devjobs-api.vercel.app/swagger) for fetching data.
 
 ### Project folder structure:
     .
