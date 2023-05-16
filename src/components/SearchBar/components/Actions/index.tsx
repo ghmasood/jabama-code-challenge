@@ -14,24 +14,28 @@ interface IActionsProps {
 function Actions({ loading, setLoading }: IActionsProps) {
   //ROUTER
   const router = useRouter();
-
-  //STATE
-  const [isFull, setIsFull] = useState(router.query.fullOnly ?? false);
-
-  //LIFECYCLE HOOK
-  useEffect(() => {
-    router.isReady &&
-      router.replace(
-        { query: { ...router.query, fullOnly: isFull } },
-        undefined,
-        { shallow: true }
-      );
-  }, [isFull]);
+  const fullQuery = router.query.fullOnly;
 
   return (
     <div className={styles.actions}>
-      <span onClick={() => setIsFull(!isFull)}>
-        {isFull ? (
+      <span
+        onClick={() =>
+          fullQuery === "true"
+            ? router.isReady &&
+              router.replace(
+                { query: { ...router.query, fullOnly: "false" } },
+                undefined,
+                { shallow: true }
+              )
+            : router.isReady &&
+              router.replace(
+                { query: { ...router.query, fullOnly: "true" } },
+                undefined,
+                { shallow: true }
+              )
+        }
+      >
+        {fullQuery === "true" ? (
           <MdCheckBox size="2rem" color="rgba(2, 203, 154, 1)" />
         ) : (
           <div className={styles.box} />
@@ -41,7 +45,7 @@ function Actions({ loading, setLoading }: IActionsProps) {
       <button
         onClick={() => {
           setLoading(true);
-          router.replace({ query: { ...router.query, limit: 9 } });
+          router.isReady && router.replace({ query: { ...router.query, limit: 9 } });
         }}
       >
         {loading ? <CgSpinner className="loading" size={"2rem"} /> : "Search"}

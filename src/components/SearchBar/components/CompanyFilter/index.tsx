@@ -16,11 +16,12 @@ function CompanyFilter() {
         placeholder="Filter by title, companies..."
         value={router.query.keyword ?? ""}
         onChange={(e) => {
-          router.replace(
-            { query: { ...router.query, keyword: e.target.value } },
-            undefined,
-            { shallow: true }
-          );
+          router.isReady &&
+            router.replace(
+              { query: { ...router.query, keyword: e.target.value } },
+              undefined,
+              { shallow: true }
+            );
         }}
       />
     </div>

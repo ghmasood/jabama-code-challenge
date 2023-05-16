@@ -16,11 +16,12 @@ function LocationFilter() {
         placeholder="Filter by location..."
         value={router.query.loc ?? ""}
         onChange={(e) => {
-          router.replace(
-            { query: { ...router.query, loc: e.target.value } },
-            undefined,
-            { shallow: true }
-          );
+          router.isReady &&
+            router.replace(
+              { query: { ...router.query, loc: e.target.value } },
+              undefined,
+              { shallow: true }
+            );
         }}
       />
     </div>

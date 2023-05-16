@@ -40,31 +40,32 @@ function JobList({ loading, SSRResponse }: IJobListProps) {
       </div>
 
       {/* LOAD MORE BUTTON */}
-      {SSRResponse.result.meta.total > Number(router.query.limit) && (
-        <button
-          onClick={() => {
-            setMoreLoading(true);
-            router.replace(
-              {
-                query: {
-                  ...router.query,
+      {SSRResponse.result.meta.total > Number(router.query.limit) &&
+        !loading && (
+          <button
+            onClick={() => {
+              setMoreLoading(true);
+              router.replace(
+                {
+                  query: {
+                    ...router.query,
 
-                  limit: Number(router.query.limit) + 3,
+                    limit: Number(router.query.limit) + 3,
+                  },
                 },
-              },
-              undefined,
-              { scroll: false }
-            );
-          }}
-          className={styles.loadMore}
-        >
-          {moreLoading ? (
-            <CgSpinner className="loading" size={"2rem"} />
-          ) : (
-            "Load More"
-          )}
-        </button>
-      )}
+                undefined,
+                { scroll: false }
+              );
+            }}
+            className={styles.loadMore}
+          >
+            {moreLoading ? (
+              <CgSpinner className="loading" size={"2rem"} />
+            ) : (
+              "Load More"
+            )}
+          </button>
+        )}
 
       {/* NOT FOUND MESSAGE  */}
       {SSRResponse.result.meta.total === 0 && !loading && (

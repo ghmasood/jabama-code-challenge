@@ -18,10 +18,17 @@ const Home: NextPage<IHomePage> = (props) => {
 
   //LIFECYCLE HOOK
   useEffect(() => {
-    if (typeof router.query.limit === "undefined") {
-      router.replace({ query: { ...router.query, limit: 9 } });
+    if (router.query.limit === undefined) {
+      router.isReady &&
+        router.replace(
+          { query: { ...router.query, limit: 9, fullOnly: false } },
+          undefined,
+          {
+            shallow: true,
+          }
+        );
     }
-  }, [router]);
+  }, []);
 
   useEffect(() => {
     setLoading(false);
