@@ -1,38 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Job Application App
 
-## Getting Started
+This project was created according to Jabama code challenge. In this project we implement page of job application with some filter. You can see [Live Demo](http://jabama.gh-masoud.ir) powered by Vercel.
+<br/>
+I'm storing the params in url and syncing with inputs and checkbox. Render and fetch data when user click on  **Search** button. All api calls are server-side render with showing fallback error.
+<br/>
+You can improve it by add application page and other things! and for use this project you can use `npm run dev` script in terminal.
 
-First, run the development server:
+### Features:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- Load list of applications in home page with **Load More** button
+- Two input and check box in **Searchbar** for filtering data
+- Skeleton cart loading until fully loaded
+- Design and Responsive design with SCSS
+- Implement error page and not found message with return to home page
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Used packages:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- React
+- NextJs
+- TypeScript
+- SASS
+- dayJs
+- react-icons
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Additonl thing:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- **Design:** My design based on this [screen shot](https://jabama-jobs-code-challenge.vercel.app/design/desktop-design-home.png)
+- **Server:** I'm using this [Api Document](https://jabama-devjobs-api.vercel.app/swagger) for fetching data
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Project folder structure:
+    .
+    ├── public                  # Public Assets
+    ├── src                     # Source files 
+    │   ├── assets                # Styles and other assets that needs to be transpiled at the build time
+    │   ├── types                 # Global types
+    │   ├── pages(app)            # Next.js File routings/App Directory
+    │   └── components            # All Major and Minor Components will place here
+    ├── config files            # .env files, docker files, bundler configs, .eslintrc, package.json, tsconfig.json, etc. 
+    └── README.md
+### Component folder structure:
+    .
+    │   ├── ...
+    │   └── components                      
+    |           ├── ExampleComponent                   # ExampleComponent Folder
+    |           |       ├── components                 # Sub Components of Example Component
+    |           |       ├── componentName.module.scss  # Modular Styles
+    |           |       └── index.tsx                  # Main File (only contains imports, hook calls and jsx codes)
+    │           ├── ...
+    
+### Snapshots:
+- Home Page <br/><br/> <img width="1920" alt="Screenshot 1402-02-26 at 22 03 19" src="https://github.com/ghmasood/jabama-code-challenge/assets/33165677/913f6dcb-86b7-4027-b9cf-ce859b5ef330"> <br/><br/>
+- Skeleton Loading <br/><br/> <img width="1920" alt="Screenshot 1402-02-26 at 22 03 57" src="https://github.com/ghmasood/jabama-code-challenge/assets/33165677/0ebecc5e-a56f-4d61-b604-5347fd34419b"> <br/><br/>
+- Search Result <br/><br/> <img width="1920" alt="Screenshot 1402-02-26 at 22 04 03" src="https://github.com/ghmasood/jabama-code-challenge/assets/33165677/e8e1ca91-68fb-486d-aabb-2db9942066db"> <br/><br/>
+- Not Found Result <br/><br/> <img width="1920" alt="Screenshot 1402-02-26 at 22 04 14" src="https://github.com/ghmasood/jabama-code-challenge/assets/33165677/22e4cb30-7fed-4229-8dd9-08f7d86ecb96"> <br/><br/>
+- Error Page <br/><br/> <img width="1920" alt="Screenshot 1402-02-26 at 22 04 46" src="https://github.com/ghmasood/jabama-code-challenge/assets/33165677/967b449b-d82e-4991-987f-3b53c1fd0a0a">
